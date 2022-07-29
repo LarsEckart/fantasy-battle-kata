@@ -44,24 +44,25 @@ public class Player extends Target {
             // TODO: Not implemented yet
             //  Add friendly fire, calculate soak -> sum of equipped armor's damageSoak
             soak = totalDamage;
-        } else if (other instanceof RareMob rareMob) {
-            float soakFromBuffs = ((float) rareMob.getBuffs()
-                    .stream()
-                    .mapToDouble(DefensiveBuff::soakModifier)
-                    .sum()) + 1f;
-            float strengthModifier;
-            if (rareMob.getArmor().getType() == ArmorType.CLOTH) {
-                strengthModifier = stats.getStrength() * 0.1f;
-            } else if (rareMob.getArmor().getType() == ArmorType.PLATE) {
-                strengthModifier = stats.getStrength() * 1.0f;
+        } else if (other instanceof RareMob mob) {
+            int armorCoefficient;
+            if (mob.getArmor().getType() == ArmorType.CLOTH) {
+                armorCoefficient = 1;
+            } else if (mob.getArmor().getType() == ArmorType.PLATE) {
+                armorCoefficient = 5;
             } else {
-                strengthModifier = stats.getStrength() * 0.4f;
+                armorCoefficient = 3;
             }
-            if (rareMob.getArmor() instanceof UncommonArmor) {
-                soak = Math.round(rareMob.getArmor().getDamageSoak() * (soakFromBuffs + strengthModifier)) + 10;
-            } else {
-                soak = Math.round(rareMob.getArmor().getDamageSoak() * (soakFromBuffs + strengthModifier));
-            }
+            soak = Math.round(
+                    armorCoefficient * mob.getArmor().getDamageSoak() *
+                            (
+                                    ((float) mob.getBuffs()
+                                            .stream()
+                                            .mapToDouble(DefensiveBuff::soakModifier)
+                                            .sum()) +
+                                            1f
+                            )
+            );
         }
         return soak;
     }
