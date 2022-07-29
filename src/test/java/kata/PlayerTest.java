@@ -2,21 +2,37 @@ package kata;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+
+import com.github.larseckart.tcr.SilentTestCommitRevertMainExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
+@ExtendWith(SilentTestCommitRevertMainExtension.class)
 public class PlayerTest {
 
-    @Disabled("Test is not finished yet")
+//    @Disabled("Test is not finished yet")
     @Test
     void damageCalculationsWithMocks() {
         Inventory inventory = mock(Inventory.class);
+        Equipment mockEquipment = mock(Equipment.class);
+        Weapon mockWeapon = mock(Weapon.class);
+        Jewellery mockJewellery = mock(Jewellery.class);
+        Armor mockTargetArmor = mock(Armor.class);
+        given(inventory.getEquipment()).willReturn(mockEquipment);
+        given(mockEquipment.getLeftHand()).willReturn(mockWeapon);
+        given(mockEquipment.getRightHand()).willReturn(mockWeapon);
+        given(mockEquipment.getNecklace()).willReturn(mockJewellery);
         Stats stats = mock(Stats.class);
         RareMob target = mock(RareMob.class);
+        given(target.getArmor()).willReturn(mockTargetArmor);
+        given(mockTargetArmor.getType()).willReturn(ArmorType.MAIL);
 
         Damage damage = new Player(inventory, stats).calculateDamage(target);
-        assertEquals(10, damage.getAmount());
+        assertEquals(0, damage.getAmount());
     }
 
     @Disabled("Test is not finished yet")
