@@ -8,6 +8,8 @@ public class Equipment {
     private final Armor chest;
     private final Armor feet;
     private final Jewellery necklace;
+    private final Jewellery ring1;
+    private final Jewellery ring2;
     // TODO add new jewellery (2x ring) that may be equipped and contributed to damage modifier like necklace does.
 
     public Equipment(Weapon rightHand, Weapon leftHand, Armor head, Armor chest, Armor feet, Jewellery necklace) {
@@ -17,6 +19,27 @@ public class Equipment {
         this.chest = chest;
         this.feet = feet;
         this.necklace = necklace;
+        this.ring1 = null;
+        this.ring2 = null;
+    }
+
+    public Equipment(
+            Weapon rightHand,
+            Weapon leftHand,
+            Armor head,
+            Armor chest,
+            Armor feet,
+            Jewellery necklace,
+            Jewellery ring1,
+            Jewellery ring2) {
+        this.rightHand = rightHand;
+        this.leftHand = leftHand;
+        this.head = head;
+        this.chest = chest;
+        this.feet = feet;
+        this.necklace = necklace;
+        this.ring1 = ring1;
+        this.ring2 = ring2;
     }
 
     public Weapon getRightHand() {

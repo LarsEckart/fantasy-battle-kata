@@ -2,7 +2,6 @@ package kata;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -53,6 +52,29 @@ public class PlayerTest {
                 null,
                 null,
                 new Jewellery("necklace", 1.0f));
+        Inventory inventory = new Inventory(equipment);
+        Stats stats = new Stats(2);
+        RareMob target = new RareMob(
+                new CommonArmor("anything", 4, ArmorType.MAIL),
+                List.of(new DefensiveBuff(0.2f), new DefensiveBuff(0.3f)));
+
+        Damage damage = new Player(inventory, stats).calculateDamage(target);
+
+        assertEquals(28, damage.getAmount());
+    }
+
+    @Test
+    void damageCalculationsWithRings() {
+        Jewellery ring1 = new Jewellery("Red Diamond Ring", 0.5f);
+        Jewellery ring2 = new Jewellery("Blue Diamond Ring", 0.7f);
+        Equipment equipment = new Equipment(
+                new CommonWeapon("axe", 5, 1.0f),
+                new CommonWeapon("hammer", 5, 1.0f),
+                null,
+                null,
+                null,
+                new Jewellery("necklace", 1.0f),
+                ring1, ring2);
         Inventory inventory = new Inventory(equipment);
         Stats stats = new Stats(2);
         RareMob target = new RareMob(
