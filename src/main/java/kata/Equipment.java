@@ -19,8 +19,8 @@ public class Equipment {
         this.chest = chest;
         this.feet = feet;
         this.necklace = necklace;
-        this.ring1 = null;
-        this.ring2 = null;
+        this.ring1 = new Jewellery("", 0);
+        this.ring2 = new Jewellery("", 0);
     }
 
     public Equipment(
@@ -64,5 +64,13 @@ public class Equipment {
 
     public Jewellery getNecklace() {
         return necklace;
+    }
+
+    public Jewellery getRing1() {
+        return ring1;
+    }
+
+    public Jewellery getRing2() {
+        return ring2;
     }
 }

@@ -31,11 +31,15 @@ public class Player extends Target {
         Weapon rightHand = equipment.getRightHand();
         Weapon leftHand = equipment.getLeftHand();
         Jewellery necklace = equipment.getNecklace();
+        Jewellery ring1 = equipment.getRing1();
+        Jewellery ring2 = equipment.getRing2();
         float strengthModifier = stats.getStrength() * 0.8f;
         return strengthModifier +
                 rightHand.getDamageModifier() +
                 leftHand.getDamageModifier() +
-                necklace.getDamageModifier();
+                necklace.getDamageModifier() +
+                ring1.getDamageModifier() +
+                ring2.getDamageModifier();
     }
 
     private int getSoak(Target other, int totalDamage) {

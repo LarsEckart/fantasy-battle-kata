@@ -20,6 +20,10 @@ public class PlayerTest {
         Equipment mockEquipment = mock(Equipment.class);
         Weapon mockWeapon = mock(Weapon.class);
         Jewellery mockJewellery = mock(Jewellery.class);
+        Jewellery mockRing1 = mock(Jewellery.class);
+        Jewellery mockRing2 = mock(Jewellery.class);
+        given(mockRing1.getDamageModifier()).willReturn(0.0f);
+        given(mockRing2.getDamageModifier()).willReturn(0.0f);
         Armor mockTargetArmor = mock(Armor.class);
         given(inventory.getEquipment()).willReturn(mockEquipment);
         given(mockEquipment.getLeftHand()).willReturn(mockWeapon);
@@ -27,6 +31,8 @@ public class PlayerTest {
         given(mockWeapon.getBaseDamage()).willReturn(5);
         given(mockWeapon.getDamageModifier()).willReturn(1.0f);
         given(mockEquipment.getNecklace()).willReturn(mockJewellery);
+        given(mockEquipment.getRing1()).willReturn(mockRing1);
+        given(mockEquipment.getRing2()).willReturn(mockRing2);
         given(mockJewellery.getDamageModifier()).willReturn(1.0f);
         Stats stats = mock(Stats.class);
         given(stats.getStrength()).willReturn(2);
@@ -83,6 +89,6 @@ public class PlayerTest {
 
         Damage damage = new Player(inventory, stats).calculateDamage(target);
 
-        assertEquals(28, damage.getAmount());
+        assertEquals(40, damage.getAmount());
     }
 }
