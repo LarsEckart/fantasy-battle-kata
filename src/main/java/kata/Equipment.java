@@ -8,8 +8,7 @@ public class Equipment {
     private final Armor chest;
     private final Armor feet;
     private final Jewellery necklace;
-    // TODO add new jewellery (ring) that may be equipped
-    // that may also add damage modifier
+    // TODO add new jewellery (2x ring) that may be equipped and contributed to damage modifier like necklace does.
 
     public Equipment(Weapon rightHand, Weapon leftHand, Armor head, Armor chest, Armor feet, Jewellery necklace) {
         this.rightHand = rightHand;
