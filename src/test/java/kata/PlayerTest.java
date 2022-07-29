@@ -5,7 +5,6 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 
 import com.github.larseckart.tcr.SilentTestCommitRevertMainExtension;
 
@@ -16,7 +15,7 @@ import static org.mockito.Mockito.mock;
 @ExtendWith(SilentTestCommitRevertMainExtension.class)
 public class PlayerTest {
 
-    //    @Disabled("Test is not finished yet")
+    @Disabled("Test is not finished yet")
     @Test
     void damageCalculationsWithMocks() {
         Inventory inventory = mock(Inventory.class);
