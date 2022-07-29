@@ -42,7 +42,7 @@ public class Player extends Target {
         int soak = 0;
         if (other instanceof Player) {
             // TODO: Not implemented yet
-            //  Add friendly fire, calculate soak -> sum of equipped armor's damageSoak
+            //  Add friendly fire, calculate soak -> sum of equipped armor's damageSoak multiplied with armor coefficient (like for rare mobs)
             soak = totalDamage;
         } else if (other instanceof RareMob mob) {
             int armorCoefficient;
