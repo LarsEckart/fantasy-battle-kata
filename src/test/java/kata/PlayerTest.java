@@ -25,6 +25,7 @@ public class PlayerTest {
         given(inventory.getEquipment()).willReturn(mockEquipment);
         given(mockEquipment.getLeftHand()).willReturn(mockWeapon);
         given(mockEquipment.getRightHand()).willReturn(mockWeapon);
+        given(mockWeapon.getBaseDamage()).willReturn(5);
         given(mockEquipment.getNecklace()).willReturn(mockJewellery);
         Stats stats = mock(Stats.class);
         RareMob target = mock(RareMob.class);
