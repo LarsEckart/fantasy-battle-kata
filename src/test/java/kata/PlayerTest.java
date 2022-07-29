@@ -1,5 +1,7 @@
 package kata;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,13 +34,16 @@ public class PlayerTest {
         Stats stats = mock(Stats.class);
         given(stats.getStrength()).willReturn(2);
         RareMob target = mock(RareMob.class);
+        DefensiveBuff mockDefensiveBuff = mock(DefensiveBuff.class);
+        given(target.getBuffs()).willReturn(List.of(mockDefensiveBuff, mockDefensiveBuff));
+        given(mockDefensiveBuff.soakModifier()).willReturn(0.2f, 0.3f);
         given(target.getArmor()).willReturn(mockTargetArmor);
         given(mockTargetArmor.getType()).willReturn(ArmorType.MAIL);
         given(mockTargetArmor.getDamageSoak()).willReturn(4);
 
         Damage damage = new Player(inventory, stats).calculateDamage(target);
 
-        assertEquals(34, damage.getAmount());
+        assertEquals(28, damage.getAmount());
     }
 
     @Disabled("Test is not finished yet")
