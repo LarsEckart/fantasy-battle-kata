@@ -1,6 +1,6 @@
 package kata;
 
-class Damage {
+public class Damage {
 
     private int amount;
 

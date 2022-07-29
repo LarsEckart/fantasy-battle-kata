@@ -1,5 +1,5 @@
 package kata;
 
-abstract class Target {
+public abstract class Target {
 
 }

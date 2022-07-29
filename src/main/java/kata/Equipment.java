@@ -1,40 +1,40 @@
 package kata;
 
-class Equipment {
+public class Equipment {
 
     // TODO add a ring item that may be equipped
-    //  that may also add damage modifier
-    private Item leftHand;
-    private Item rightHand;
-    private Item head;
-    private Item feet;
-    private Item chest;
+    // that may also add damage modifier
+    private final Item rightHand;
+    private final Item leftHand;
+    private final Item head;
+    private final Item chest;
+    private final Item feet;
 
-    Equipment(Item leftHand, Item rightHand, Item head, Item feet, Item chest) {
-        this.leftHand = leftHand;
+    public Equipment(Item rightHand, Item leftHand, Item head, Item chest, Item feet) {
         this.rightHand = rightHand;
+        this.leftHand = leftHand;
         this.head = head;
-        this.feet = feet;
         this.chest = chest;
+        this.feet = feet;
     }
 
-    Item getLeftHand() {
-        return leftHand;
-    }
-
-    Item getRightHand() {
+    public Item getRightHand() {
         return rightHand;
     }
 
-    Item getHead() {
+    public Item getLeftHand() {
+        return leftHand;
+    }
+
+    public Item getHead() {
         return head;
     }
 
-    Item getFeet() {
-        return feet;
+    public Item getChest() {
+        return chest;
     }
 
-    Item getChest() {
-        return chest;
+    public Item getFeet() {
+        return feet;
     }
 }
