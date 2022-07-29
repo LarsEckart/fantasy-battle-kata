@@ -2,7 +2,7 @@ package kata;
 
 public class Damage {
 
-    private int amount;
+    private final int amount;
 
     Damage(int amount) {
         this.amount = amount;
@@ -10,9 +10,5 @@ public class Damage {
 
     int getAmount() {
         return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

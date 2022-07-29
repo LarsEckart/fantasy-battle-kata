@@ -20,32 +20,22 @@ public class Player extends Target {
 
     private int getBaseDamage() {
         Equipment equipment = this.inventory.getEquipment();
-        Item rightHand = equipment.getRightHand();
-        Item leftHand = equipment.getLeftHand();
-        Item head = equipment.getHead();
-        Item chest = equipment.getChest();
-        Item feet = equipment.getFeet();
+        Weapon rightHand = equipment.getRightHand();
+        Weapon leftHand = equipment.getLeftHand();
         return rightHand.getBaseDamage() +
-                leftHand.getBaseDamage() +
-                head.getBaseDamage() +
-                chest.getBaseDamage() +
-                feet.getBaseDamage();
+                leftHand.getBaseDamage();
     }
 
     private float getDamageModifier() {
         Equipment equipment = this.inventory.getEquipment();
-        Item rightHand = equipment.getRightHand();
-        Item leftHand = equipment.getLeftHand();
-        Item head = equipment.getHead();
-        Item chest = equipment.getChest();
-        Item feet = equipment.getFeet();
+        Weapon rightHand = equipment.getRightHand();
+        Weapon leftHand = equipment.getLeftHand();
+        Jewellery necklace = equipment.getNecklace();
         float strengthModifier = stats.getStrength() * 0.8f;
         return strengthModifier +
                 rightHand.getDamageModifier() +
                 leftHand.getDamageModifier() +
-                head.getDamageModifier() +
-                chest.getDamageModifier() +
-                feet.getDamageModifier();
+                necklace.getDamageModifier();
     }
 
     private int getSoak(Target other, int totalDamage) {
@@ -57,7 +47,7 @@ public class Player extends Target {
         } else if (other instanceof RareMob rareMob) {
             float soakFromBuffs = ((float) rareMob.getBuffs()
                     .stream()
-                    .mapToDouble(Buff::soakModifier)
+                    .mapToDouble(DefensiveBuff::soakModifier)
                     .sum()) + 1f;
             float strengthModifier;
             if (rareMob.getArmor().getType() == ArmorType.CLOTH) {
@@ -67,7 +57,11 @@ public class Player extends Target {
             } else {
                 strengthModifier = stats.getStrength() * 0.4f;
             }
-            soak = Math.round(rareMob.getArmor().getDamageSoak() * (soakFromBuffs + strengthModifier));
+            if (rareMob.getArmor() instanceof UncommonArmor) {
+                soak = Math.round(rareMob.getArmor().getDamageSoak() * (soakFromBuffs + strengthModifier)) + 10;
+            } else {
+                soak = Math.round(rareMob.getArmor().getDamageSoak() * (soakFromBuffs + strengthModifier));
+            }
         }
         return soak;
     }

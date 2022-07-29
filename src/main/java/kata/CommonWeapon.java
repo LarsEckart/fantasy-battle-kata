@@ -1,6 +1,6 @@
 package kata;
 
-public class CommonWeapon implements Item {
+public class CommonWeapon implements Weapon {
 
     private final String name;
     private final int baseDamage;

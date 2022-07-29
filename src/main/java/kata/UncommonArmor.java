@@ -1,13 +1,11 @@
 package kata;
 
-public class CommonArmor implements Armor {
+public class UncommonArmor implements Armor {
 
-    private final String name;
     private final int soak;
     private final ArmorType type;
 
-    public CommonArmor(String name, int soak, ArmorType type) {
-        this.name = name;
+    public UncommonArmor(int soak, ArmorType type) {
         this.soak = soak;
         this.type = type;
     }

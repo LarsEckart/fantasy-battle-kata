@@ -1,6 +1,6 @@
 package kata;
 
-public interface Item {
+public interface Weapon {
 
     int getBaseDamage();
 

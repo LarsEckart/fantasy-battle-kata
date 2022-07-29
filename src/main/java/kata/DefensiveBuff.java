@@ -1,14 +1,13 @@
 package kata;
 
-public class RaidBuff implements Buff {
+public class DefensiveBuff {
 
-    private float soak;
+    private final float soak;
 
-    public RaidBuff(float soak) {
+    public DefensiveBuff(float soak) {
         this.soak = soak;
     }
 
-    @Override
     public float soakModifier() {
         return soak;
     }

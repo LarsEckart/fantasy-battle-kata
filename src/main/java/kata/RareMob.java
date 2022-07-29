@@ -5,14 +5,14 @@ import java.util.List;
 public class RareMob extends Target {
 
     private final Armor armor;
-    private final List<Buff> buffs;
+    private final List<DefensiveBuff> buffs;
 
-    public RareMob(Armor armor, List<Buff> buffs) {
+    public RareMob(Armor armor, List<DefensiveBuff> buffs) {
         this.armor = armor;
         this.buffs = buffs;
     }
 
-    List<Buff> getBuffs() {
+    List<DefensiveBuff> getBuffs() {
         return buffs;
     }
 
