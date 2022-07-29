@@ -5,12 +5,12 @@ public class Player extends Target {
     private final Inventory inventory;
     private final Stats stats;
 
-    Player(Inventory inventory, Stats stats) {
+    public Player(Inventory inventory, Stats stats) {
         this.inventory = inventory;
         this.stats = stats;
     }
 
-    Damage calculateDamage(Target other) {
+    public Damage calculateDamage(Target other) {
         int baseDamage = getBaseDamage();
         float damageModifier = getDamageModifier();
         int totalDamage = Math.round(baseDamage * damageModifier);

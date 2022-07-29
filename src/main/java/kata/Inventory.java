@@ -8,7 +8,7 @@ public class Inventory {
         this.equipment = equipment;
     }
 
-    Equipment getEquipment() {
+    public Equipment getEquipment() {
         return equipment;
     }
 }

@@ -12,11 +12,11 @@ public class RareMob extends Target {
         this.buffs = buffs;
     }
 
-    List<DefensiveBuff> getBuffs() {
+    public List<DefensiveBuff> getBuffs() {
         return buffs;
     }
 
-    Armor getArmor() {
+    public Armor getArmor() {
         return this.armor;
     }
 }
