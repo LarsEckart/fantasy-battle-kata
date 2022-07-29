@@ -1,9 +1,9 @@
 package kata;
 
-class Player extends Target {
+public class Player extends Target {
 
-    private Inventory inventory;
-    private Stats stats;
+    private final Inventory inventory;
+    private final Stats stats;
 
     Player(Inventory inventory, Stats stats) {
         this.inventory = inventory;
@@ -39,7 +39,7 @@ class Player extends Target {
         Item head = equipment.getHead();
         Item feet = equipment.getFeet();
         Item chest = equipment.getChest();
-        float strengthModifier = stats.getStrength() * 0.1f;
+        float strengthModifier = stats.getStrength() * 0.8f;
         return strengthModifier +
                 leftHand.getDamageModifier() +
                 rightHand.getDamageModifier() +
@@ -55,16 +55,19 @@ class Player extends Target {
             //  Add friendly fire
             soak = totalDamage;
         } else if (other instanceof SimpleEnemy simpleEnemy) {
-            soak = Math.round(
-                    simpleEnemy.getArmor().getDamageSoak() *
-                            (
-                                    ((float) simpleEnemy.getBuffs()
-                                            .stream()
-                                            .mapToDouble(Buff::soakModifier)
-                                            .sum()) +
-                                            1f
-                            )
-            );
+            float soakFromBuffs = ((float) simpleEnemy.getBuffs()
+                    .stream()
+                    .mapToDouble(Buff::soakModifier)
+                    .sum()) + 1f;
+            float strengthModifier;
+            if (simpleEnemy.getArmor().getType() == ArmorType.CLOTH) {
+                strengthModifier = stats.getStrength() * 0.1f;
+            } else if (simpleEnemy.getArmor().getType() == ArmorType.PLATE) {
+                strengthModifier = stats.getStrength() * 1.0f;
+            } else {
+                strengthModifier = stats.getStrength() * 0.4f;
+            }
+            soak = Math.round(simpleEnemy.getArmor().getDamageSoak() * (soakFromBuffs + strengthModifier));
         }
         return soak;
     }
