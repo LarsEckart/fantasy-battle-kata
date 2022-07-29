@@ -20,32 +20,32 @@ public class Player extends Target {
 
     private int getBaseDamage() {
         Equipment equipment = this.inventory.getEquipment();
-        Item leftHand = equipment.getLeftHand();
         Item rightHand = equipment.getRightHand();
+        Item leftHand = equipment.getLeftHand();
         Item head = equipment.getHead();
-        Item feet = equipment.getFeet();
         Item chest = equipment.getChest();
-        return leftHand.getBaseDamage() +
-                rightHand.getBaseDamage() +
+        Item feet = equipment.getFeet();
+        return rightHand.getBaseDamage() +
+                leftHand.getBaseDamage() +
                 head.getBaseDamage() +
-                feet.getBaseDamage() +
-                chest.getBaseDamage();
+                chest.getBaseDamage() +
+                feet.getBaseDamage();
     }
 
     private float getDamageModifier() {
         Equipment equipment = this.inventory.getEquipment();
-        Item leftHand = equipment.getLeftHand();
         Item rightHand = equipment.getRightHand();
+        Item leftHand = equipment.getLeftHand();
         Item head = equipment.getHead();
-        Item feet = equipment.getFeet();
         Item chest = equipment.getChest();
+        Item feet = equipment.getFeet();
         float strengthModifier = stats.getStrength() * 0.8f;
         return strengthModifier +
-                leftHand.getDamageModifier() +
                 rightHand.getDamageModifier() +
+                leftHand.getDamageModifier() +
                 head.getDamageModifier() +
-                feet.getDamageModifier() +
-                chest.getDamageModifier();
+                chest.getDamageModifier() +
+                feet.getDamageModifier();
     }
 
     private int getSoak(Target other, int totalDamage) {
