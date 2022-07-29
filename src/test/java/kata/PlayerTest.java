@@ -28,13 +28,14 @@ public class PlayerTest {
         given(mockWeapon.getBaseDamage()).willReturn(5);
         given(mockWeapon.getDamageModifier()).willReturn(1.0f);
         given(mockEquipment.getNecklace()).willReturn(mockJewellery);
+        given(mockJewellery.getDamageModifier()).willReturn(1.0f);
         Stats stats = mock(Stats.class);
         RareMob target = mock(RareMob.class);
         given(target.getArmor()).willReturn(mockTargetArmor);
         given(mockTargetArmor.getType()).willReturn(ArmorType.MAIL);
 
         Damage damage = new Player(inventory, stats).calculateDamage(target);
-        assertEquals(20, damage.getAmount());
+        assertEquals(30, damage.getAmount());
     }
 
     @Disabled("Test is not finished yet")
