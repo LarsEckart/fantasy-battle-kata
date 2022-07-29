@@ -2,12 +2,12 @@ package kata;
 
 import java.util.List;
 
-public class SimpleEnemy extends Target {
+public class RareMob extends Target {
 
     private final Armor armor;
     private final List<Buff> buffs;
 
-    public SimpleEnemy(Armor armor, List<Buff> buffs) {
+    public RareMob(Armor armor, List<Buff> buffs) {
         this.armor = armor;
         this.buffs = buffs;
     }

@@ -13,7 +13,7 @@ public class PlayerTest {
     void damageCalculationsWithMocks() {
         Inventory inventory = mock(Inventory.class);
         Stats stats = mock(Stats.class);
-        SimpleEnemy target = mock(SimpleEnemy.class);
+        RareMob target = mock(RareMob.class);
 
         Damage damage = new Player(inventory, stats).calculateDamage(target);
         assertEquals(10, damage.getAmount());
@@ -24,7 +24,7 @@ public class PlayerTest {
     void damageCalculations() {
         Inventory inventory = new Inventory(null);
         Stats stats = new Stats(0);
-        SimpleEnemy target = new SimpleEnemy(null, null);
+        RareMob target = new RareMob(null, null);
         Damage damage = new Player(inventory, stats).calculateDamage(target);
         assertEquals(10, damage.getAmount());
     }

@@ -54,20 +54,20 @@ public class Player extends Target {
             // TODO: Not implemented yet
             //  Add friendly fire
             soak = totalDamage;
-        } else if (other instanceof SimpleEnemy simpleEnemy) {
-            float soakFromBuffs = ((float) simpleEnemy.getBuffs()
+        } else if (other instanceof RareMob rareMob) {
+            float soakFromBuffs = ((float) rareMob.getBuffs()
                     .stream()
                     .mapToDouble(Buff::soakModifier)
                     .sum()) + 1f;
             float strengthModifier;
-            if (simpleEnemy.getArmor().getType() == ArmorType.CLOTH) {
+            if (rareMob.getArmor().getType() == ArmorType.CLOTH) {
                 strengthModifier = stats.getStrength() * 0.1f;
-            } else if (simpleEnemy.getArmor().getType() == ArmorType.PLATE) {
+            } else if (rareMob.getArmor().getType() == ArmorType.PLATE) {
                 strengthModifier = stats.getStrength() * 1.0f;
             } else {
                 strengthModifier = stats.getStrength() * 0.4f;
             }
-            soak = Math.round(simpleEnemy.getArmor().getDamageSoak() * (soakFromBuffs + strengthModifier));
+            soak = Math.round(rareMob.getArmor().getDamageSoak() * (soakFromBuffs + strengthModifier));
         }
         return soak;
     }

@@ -1,11 +1,11 @@
 package kata;
 
-public class BasicArmor implements Armor {
+public class CommonArmor implements Armor {
 
     private final int soak;
     private final ArmorType type;
 
-    public BasicArmor(int soak, ArmorType type) {
+    public CommonArmor(int soak, ArmorType type) {
         this.soak = soak;
         this.type = type;
     }
