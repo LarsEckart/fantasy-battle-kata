@@ -16,7 +16,7 @@ import static org.mockito.Mockito.mock;
 @ExtendWith(SilentTestCommitRevertMainExtension.class)
 public class PlayerTest {
 
-//    @Disabled("Test is not finished yet")
+    //    @Disabled("Test is not finished yet")
     @Test
     void damageCalculationsWithMocks() {
         Inventory inventory = mock(Inventory.class);
@@ -46,13 +46,23 @@ public class PlayerTest {
         assertEquals(28, damage.getAmount());
     }
 
-    @Disabled("Test is not finished yet")
     @Test
     void damageCalculations() {
-        Inventory inventory = new Inventory(null);
-        Stats stats = new Stats(0);
-        RareMob target = new RareMob(null, null);
+        Equipment equipment = new Equipment(
+                new CommonWeapon("axe", 5, 1.0f),
+                new CommonWeapon("hammer", 5, 1.0f),
+                null,
+                null,
+                null,
+                new Jewellery("necklace", 1.0f));
+        Inventory inventory = new Inventory(equipment);
+        Stats stats = new Stats(2);
+        RareMob target = new RareMob(
+                new CommonArmor("anything", 4, ArmorType.MAIL),
+                List.of(new DefensiveBuff(0.2f), new DefensiveBuff(0.3f)));
+
         Damage damage = new Player(inventory, stats).calculateDamage(target);
-        assertEquals(10, damage.getAmount());
+
+        assertEquals(28, damage.getAmount());
     }
 }
