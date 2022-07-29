@@ -37,6 +37,7 @@ public class PlayerTest {
         given(mockTargetArmor.getDamageSoak()).willReturn(1);
 
         Damage damage = new Player(inventory, stats).calculateDamage(target);
+
         assertEquals(43, damage.getAmount());
     }
 
