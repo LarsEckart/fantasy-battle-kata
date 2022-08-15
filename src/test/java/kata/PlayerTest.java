@@ -19,13 +19,22 @@ public class PlayerTest {
         assertEquals(10, damage.getAmount());
     }
 
-    @Disabled("Test is not finished yet")
     @Test
     void damageCalculations() {
-        Inventory inventory = new Inventory(null);
-        Stats stats = new Stats(0);
-        RareMob target = new RareMob(null);
-        Damage damage = new Player(inventory, stats).calculateDamage(target);
-        assertEquals(10, damage.getAmount());
+        Inventory inventory = new Inventory(
+                new Equipment(
+                        new CommonWeapon(null, 18, 3.5f),
+                        new CommonWeapon(null, 15, 3.7f),
+                        null,
+                        null,
+                        null,
+                        new Jewellery(null, 2.9f)));
+        Stats stats = new Stats(18);
+        RareMob target = new RareMob(new CommonArmor(null, 21, ArmorType.MAIL));
+        Player player = new Player(inventory, stats);
+
+        Damage damage = player.calculateDamage(target);
+
+        assertEquals(431, damage.getAmount());
     }
 }
