@@ -24,7 +24,7 @@ public class PlayerTest {
     void damageCalculations() {
         Inventory inventory = new Inventory(null);
         Stats stats = new Stats(0);
-        RareMob target = new RareMob(null, null);
+        RareMob target = new RareMob(null);
         Damage damage = new Player(inventory, stats).calculateDamage(target);
         assertEquals(10, damage.getAmount());
     }

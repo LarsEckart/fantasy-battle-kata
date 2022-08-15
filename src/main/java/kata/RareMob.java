@@ -7,9 +7,9 @@ public class RareMob extends Target {
     private final Armor armor;
     private final List<DefensiveBuff> buffs;
 
-    public RareMob(Armor armor, List<DefensiveBuff> buffs) {
+    public RareMob(Armor armor) {
         this.armor = armor;
-        this.buffs = buffs;
+        this.buffs = List.of(new DefensiveBuff(5.0f));
     }
 
     public List<DefensiveBuff> getBuffs() {
